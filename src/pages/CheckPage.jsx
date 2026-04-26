@@ -87,7 +87,10 @@ export default function CheckPage({ record, hull, project, user, onBack, onSaved
         <button className="btn-ghost" onClick={onBack} style={{ padding: '8px 0', marginRight: 12 }}>←</button>
         <div style={{ flex: 1 }}>
           <div className="topbar-title">{record.check_items?.name}</div>
-          <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>호선 {hull.hull_no} · {project.project_name}</div>
+          <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
+            호선 {record.hulls?.hull_no || hull.hull_no || '?'}
+            {(record.hulls?.projects?.name || project.project_name) && ` · ${record.hulls?.projects?.name || project.project_name}`}
+          </div>
         </div>
       </div>
 
